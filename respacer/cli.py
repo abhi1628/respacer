@@ -15,7 +15,6 @@ import os
 import sys
 
 from .docx_handler import fix_docx
-from .pdf_handler import fix_pdf
 
 
 def _print_report(report, verbose):
@@ -71,6 +70,15 @@ def main():
         if ext == ".docx":
             report = fix_docx(args.input, args.output, min_length=args.min_length)
         elif ext == ".pdf":
+            try:
+                from .pdf_handler import fix_pdf
+            except ImportError:
+                print(
+                    "PDF support requires an extra dependency. Install it with:\n"
+                    "  pip install respacer[pdf]",
+                    file=sys.stderr,
+                )
+                sys.exit(1)
             report = fix_pdf(args.input, args.output, min_length=args.min_length)
         else:
             print(f"Unsupported file type: {ext}. Use .docx or .pdf.", file=sys.stderr)

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "respacer"
-version = "0.1.0"
+version = "0.1.1"
 description = "Fix missing spaces in text mangled by PDF-to-Word conversion, while preserving formatting."
 readme = "README.md"
 requires-python = ">=3.8"
@@ -21,13 +21,14 @@ classifiers = [
 ]
 dependencies = [
     "python-docx>=1.1.0",
-    "pdfplumber>=0.11.0",
     "wordninja>=2.0.0",
-    "requests>=2.31.0",
 ]
 
 [project.optional-dependencies]
+pdf = ["pdfplumber>=0.11.0"]
+llm = ["requests>=2.31.0"]
 dev = ["pytest>=7.0"]
+all = ["pdfplumber>=0.11.0", "requests>=2.31.0", "pytest>=7.0"]
 
 [project.scripts]
 respacer = "respacer.cli:main"

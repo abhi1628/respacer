@@ -50,7 +50,7 @@ it preserves 100% of the original formatting, which a fresh PDF extraction canno
 ## Installation
 
 ```bash
-git clone https://github.com/<your-username>/respacer.git
+git clone https://github.com/abhi1628/respacer.git
 cd respacer
 pip install -r requirements.txt
 pip install -e .
